@@ -66,12 +66,12 @@ pipeline {
             }
         }
 		
-		//stage('OK to deploy to PRD?') {
-//			agent none
-			//steps {
-//				input "Deploy to PRD?"
-			//}
-		//}
+		stage('OK to deploy to PRD?') {
+			agent none
+			steps {
+				input "Deploy to PRD?"
+			}
+		}
 		
 		
          // Deploy to Production Step
