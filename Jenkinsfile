@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "UiPath"}
+	agent none
 
         // Environment Variables
         environment {
@@ -15,6 +15,7 @@ pipeline {
 
         // Printing Basic Information
         stage('Preparing'){
+			agent { label "UiPath"}
             steps {
                 echo "Jenkins Home ${env.JENKINS_HOME}"
                 echo "Jenkins URL ${env.JENKINS_URL}"
@@ -28,6 +29,7 @@ pipeline {
 
          // Build Stages
         stage('Build') {
+			agent { label "UiPath"}
             steps {
                 echo "Building..with ${WORKSPACE}"
                 UiPathPack (
@@ -40,6 +42,7 @@ pipeline {
         }
          // Test Stages
         stage('Test') {
+			agent { label "UiPath"}
             steps {
                 echo 'Testing..the workflow...'
             }
@@ -47,34 +50,29 @@ pipeline {
 
          // Deploy Stages
         stage('Deploy to FAT') {
+			agent { label "UiPath"}
             steps {
                 echo "Deploying to FAT "
 
             }
         }
 		
-		stage('OK to deploy to UAT?') {
+		stage('OK to deploy to PRD?') {
+			agent none
 			steps {
-				input "Deploy to UAT?"
+				input "Deploy to PRD?"
 			}
 		}
 		
 		
          // Deploy to Production Step
         stage('Deploy to Production') {
+			agent { label "UiPath"}
             steps {
                 echo 'Deploy to Production'
                 }
             }
     }
-
-    // Options
-    options {
-        // Timeout for pipeline
-        timeout(time:80, unit:'MINUTES')
-        skipDefaultCheckout()
-    }
-
 
     // 
     post {
