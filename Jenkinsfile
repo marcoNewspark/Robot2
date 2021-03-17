@@ -83,8 +83,8 @@ pipeline {
 					credentials: Token(accountName: 'Newspark', credentialsId: 'UiPathAPI'), 
 					environments: '', 
 					folderName: 'Robot2', 
-					orchestratorAddress: 'https://cloud.uipath.com/newspark', 
-					orchestratorTenant: 'Default', 
+					orchestratorAddress: '${env.UIPATH_ORCH_URL}', 
+					orchestratorTenant: '${env.UIPATH_ORCH_TENANT_NAME}', 
 					packagePath: '${env.PACKAGEPATH}' 
 				)
                 }
