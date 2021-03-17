@@ -84,7 +84,7 @@ pipeline {
 					environments: '', 
 					folderName: 'Robot2', 
 					orchestratorAddress: '${env.UIPATH_ORCH_URL}', 
-					orchestratorTenant: '${env.UIPATH_ORCH_TENANT_NAME}', 
+					orchestratorTenant: 'Default', 
 					packagePath: '${env.PACKAGEPATH}' 
 				)
                 }
