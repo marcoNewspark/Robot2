@@ -80,12 +80,12 @@ pipeline {
             steps {
                 echo 'Deploy to Production'
 				UiPathDeploy(
-					credentials: Token(accountName: 'Newspark', credentialsId: 'UiPathAPI'), 
-					environments: '', 
-					folderName: 'Robot2', 
-					orchestratorAddress: '${env.UIPATH_ORCH_URL}', 
-					orchestratorTenant: 'Default', 
-					packagePath: '${env.PACKAGEPATH}' 
+					credentials: Token(accountName: "Newspark", credentialsId: "UiPathAPI"), 
+					environments: "", 
+					folderName: "Robot2", 
+					orchestratorAddress: "https://cloud.uipath.com/", 
+					orchestratorTenant: "Default", 
+					packagePath: "${env.PACKAGEPATH}" 
 				)
                 }
             }
