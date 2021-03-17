@@ -85,7 +85,8 @@ pipeline {
 					folderName: 'Robot2', 
 					orchestratorAddress: 'https://cloud.uipath.com/newspark/Default/orchestrator_/', 
 					orchestratorTenant: 'Default', 
-					packagePath: '${env.PACKAGEPATH}'
+					packagePath: '${env.PACKAGEPATH}' 
+				)
                 }
             }
     }
