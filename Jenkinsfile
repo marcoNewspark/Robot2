@@ -3,12 +3,19 @@ pipeline {
 
         // Environment Variables
         environment {
-        
+		
+		//Robot Package name
+        PACKAGENAME = "Robot2"
         //Orchestrator Services
         UIPATH_ORCH_URL = "https://cloud.uipath.com/"
         UIPATH_ORCH_LOGICAL_NAME = "newspark"
+		
+		//tenant and folder
         UIPATH_ORCH_TENANT_NAME = "Default"
         UIPATH_ORCH_FOLDER_NAME = "Robot2"
+			
+		
+		PACKAGEPATH = "\\192.168.1.3\Repository\${env.PACKAGENAME}\${env.BUILD_NUMBER}"
     }
 
     stages {
@@ -22,6 +29,7 @@ pipeline {
                 echo "Jenkins JOB Number ${env.BUILD_NUMBER}"
                 echo "Jenkins JOB Name ${env.JOB_NAME}"
                 echo "GitHub BranhName ${env.BRANCH_NAME}"
+				echo "Repository path ${env.PACKAGEPATH}"
                 checkout scm
 
             }
@@ -33,11 +41,12 @@ pipeline {
             steps {
                 echo "Building..with ${WORKSPACE}"
                 UiPathPack (
-                      outputPath: "Output\\${env.BUILD_NUMBER}",
+                      outputPath: "${env.PACKAGEPATH}",
                       projectJsonPath: "project.json",
                       version: AutoVersion(),
                       useOrchestrator: false
-        )
+				)
+				
             }
         }
          // Test Stages
