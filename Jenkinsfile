@@ -62,7 +62,7 @@ pipeline {
 			agent { label "UiPath"}
             steps {
                 echo "Deploying to FAT "
-
+				
             }
         }
 		
@@ -79,6 +79,13 @@ pipeline {
 			agent { label "UiPath"}
             steps {
                 echo 'Deploy to Production'
+				UiPathDeploy(
+					credentials: Token(accountName: 'Newspark', credentialsId: 'UiPathAPI'), 
+					environments: '', 
+					folderName: 'Robot2', 
+					orchestratorAddress: 'https://cloud.uipath.com/newspark/Default/orchestrator_/', 
+					orchestratorTenant: 'Default', 
+					packagePath: '${env.PACKAGEPATH}'
                 }
             }
     }
