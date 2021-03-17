@@ -15,7 +15,7 @@ pipeline {
         UIPATH_ORCH_FOLDER_NAME = "Robot2"
 			
 		
-		PACKAGEPATH = "\\192.168.1.3\Repository\${env.PACKAGENAME}\${env.BUILD_NUMBER}"
+		PACKAGEPATH = "\\\\192.168.1.3\\Repository\\${env.PACKAGENAME}\\${env.BUILD_NUMBER}"
     }
 
     stages {
